@@ -3,6 +3,13 @@ import os
 import sys
 import numpy as np
 
+# Load secrets into environment variables for Streamlit Cloud
+# This must be done BEFORE importing modules that initialize clients (like graph -> nodes)
+if hasattr(st, "secrets"):
+    for key in ["OPENAI_API_KEY", "OPENAI_API_BASE", "MODEL_NAME", "ALIYUN_APPKEY", "ALIYUN_TOKEN"]:
+        if key in st.secrets and key not in os.environ:
+            os.environ[key] = st.secrets[key]
+
 # Monkeypatch to fix compatibility between bokeh<3.0.0 and numpy>=2.0.0
 # These types were removed in NumPy 1.24/2.0 but are used by older Bokeh versions
 try:
@@ -18,13 +25,15 @@ except Exception as e:
     print(f"Warning: NumPy monkeypatch failed: {e}")
 
 from langchain_core.messages import HumanMessage, AIMessage
-from graph import app_router
 from dotenv import load_dotenv
 import re
 import json
 
-# Load environment variables
+# Load environment variables (for local dev)
 load_dotenv()
+
+# Import graph AFTER loading secrets/env vars
+from graph import app_router
 
 # Page Config
 st.set_page_config(page_title="老年陪伴 Agent", page_icon="👴", initial_sidebar_state="expanded")
