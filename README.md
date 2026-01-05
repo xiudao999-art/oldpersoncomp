@@ -1,3 +1,14 @@
+---
+title: Old Person Agent
+emoji: 👴
+colorFrom: yellow
+colorTo: orange
+sdk: streamlit
+sdk_version: 1.41.1
+app_file: web_app.py
+pinned: false
+---
+
 # Wan Qing - Elderly Care Agent
 
 An AI agent designed to provide psychological care for the elderly, specializing in Validation Therapy and Person-Centered Therapy.
