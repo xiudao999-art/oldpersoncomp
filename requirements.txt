@@ -1,13 +1,21 @@
+# Web Framework
 streamlit
+streamlit-bokeh-events
+bokeh==2.4.3  # Pinned for compatibility with streamlit-bokeh-events
+
+# LLM & Graph Framework
 langchain
 langchain-community
 langchain-core
 langchain-openai
 langgraph
 langgraph-checkpoint-sqlite
+
+# Utilities
 python-dotenv
-bokeh==2.4.3
-streamlit-bokeh-events
-numpy<2.0.0
+numpy<2.0.0  # Pinned <2.0.0 for compatibility
+typing-extensions
+
+# Alibaba Cloud
 aliyun-python-sdk-core
-./libs/nls_sdk/alibabacloud-nls-python-sdk-dev
+./libs/nls_sdk/alibabacloud-nls-python-sdk-dev/
