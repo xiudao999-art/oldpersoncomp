@@ -2,8 +2,8 @@
 title: Old Person Agent
 emoji: 👴
 colorFrom: yellow
-colorTo: orange
-sdk: streamlit
+colorTo: red
+sdk: docker
 sdk_version: 1.41.1
 app_file: web_app.py
 pinned: false
