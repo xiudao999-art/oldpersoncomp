@@ -5,10 +5,15 @@ import numpy as np
 
 # Load secrets into environment variables for Streamlit Cloud
 # This must be done BEFORE importing modules that initialize clients (like graph -> nodes)
-if hasattr(st, "secrets"):
-    for key in ["OPENAI_API_KEY", "OPENAI_API_BASE", "MODEL_NAME", "ALIYUN_APPKEY", "ALIYUN_TOKEN"]:
-        if key in st.secrets and key not in os.environ:
-            os.environ[key] = st.secrets[key]
+try:
+    if hasattr(st, "secrets"):
+        for key in ["OPENAI_API_KEY", "OPENAI_API_BASE", "MODEL_NAME", "ALIYUN_APPKEY", "ALIYUN_TOKEN"]:
+            if key in st.secrets and key not in os.environ:
+                os.environ[key] = st.secrets[key]
+except FileNotFoundError:
+    pass # No secrets file found, likely running locally without .streamlit/secrets.toml
+except Exception as e:
+    print(f"Warning: Failed to load secrets: {e}")
 
 # Monkeypatch to fix compatibility between bokeh<3.0.0 and numpy>=2.0.0
 # These types were removed in NumPy 1.24/2.0 but are used by older Bokeh versions
