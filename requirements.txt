@@ -1,0 +1,12 @@
+streamlit
+langchain
+langchain-community
+langchain-core
+langchain-openai
+langgraph
+langgraph-checkpoint-sqlite
+python-dotenv
+bokeh==2.4.3
+numpy<2.0.0
+aliyun-python-sdk-core
+./libs/nls_sdk/alibabacloud-nls-python-sdk-dev
